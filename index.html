@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>School No-Borders</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
+  </head>
+  <body>
+    <div id="login-container">
+        <!-- form login -->
+        <div class="box-login">
+         <form>
+         <h1>Login</h1>
+         <div class="input-box"> 
+
+            <div class="input-field">
+             <label for="Id-login-number">Id Login Number</label>
+             <div class="input-wrapper">
+              <input type="text" id="Id-login-number" placeholder="ex: 12345678" required>
+              <i class="fa-sharp fa-solid fa-id-card-clip"></i>
+             </div>
+            </div>
+             
+            <div class="input-field"> 
+             <label for="login-password">Login Password</label>
+             <div class="input-wrapper">
+              <input type="password" id="login-password" placeholder="password" required>
+               <i class="fa-solid fa-lock"></i>
+             </div>
+            </div>
+
+             <div class="forgot-link">
+                <a href="#">Forgot Password?</a>
+             </div>
+
+             <div class="remember-check">
+              <input type="checkbox" id="remember-me">
+              <label for="remember-me">Remember me</label>
+             </div>
+             
+            <button type="submit">Login</button>   
+             </div>
+           </form>
+         </div>
+        
+        <!-- form register-->
+        <div class="box-register">
+      <form>
+        <h1>Register</h1>
+
+        <div class="input-box">
+
+        <div class="input-field">
+         <label for="name">Name</label>
+         <div class="input-wrapper">
+          <input type="text" id="name" placeholder="ex: Juan Perez" required>
+          <i class="fa-solid fa-user"></i>
+         </div>
+        </div>
+        
+        <div class="input-field">  
+         <label for="id-register-number">Id Register Number</label>
+         <div class="input-wrapper">
+          <input type="text" id="id-register-number" placeholder="ex 12345678" required>
+          <i class="fa-solid fa-id-card-clip"></i>
+         </div>
+       </div>
+
+        <div class="input-field"> 
+         <label for="register-password">Register password</label>
+         <div class="input-wrapper">
+          <input type="password" id="register-password" placeholder="password" required>
+          <i class="fa-solid fa-lock"></i>
+         </div>
+        </div>
+
+        <div class="input-field"> 
+         <label for="confirm-password">Confirm Password</label>
+         <div class="input-wrapper">
+          <input type="password" id="confirm-password" placeholder="confirm-password" required>
+          <i class="fa-solid fa-check"></i>
+         </div>
+        </div>
+         
+         <button type="submit">Register</button>
+        
+         </div> 
+        </form>
+       </div>
+
+      <div id="toggle-box">
+        <!--Toggle box left-->
+        <div class="toggle-panel-left toggle-left">
+            <h1>Hello Friend</h1>
+            <p>if you need to connected with us, register your information please</p>
+            <button type="button" id="btn-sign-in">SIGN IN</button>
+        </div>
+
+        <!--Toggle box rigt-->
+        <div class="toggle-panel-right toggle-right">
+          <h1>Welcome Back</h1>
+          <p>To keep connected with us please login with your personal info</p>
+          <button type="button" id="btn-sign-up">SIGN UP</button>
+        </div>
+      </div>
+    </div>
+    <script src="src/main.js"></script>
+  </body>
+</html>

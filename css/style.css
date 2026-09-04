@@ -1,0 +1,310 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+@keyframes transition-one { 
+    0% { 
+        left: 50%;
+        width: 50%;
+    }
+    50% { 
+        left: 0%;
+        width: 100%;
+    }
+    100% { 
+        left: 0%;
+        width: 50%;
+    }
+}
+
+@keyframes transition-two { 
+    0% { 
+        left: 0%;
+        width: 50%;
+    }
+    50% {
+        left: 0%;
+        width: 100%;
+    }
+    100% {
+        left: 50%;
+        width: 50%;
+    }
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/src/images/School.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#login-container {
+    width: 725px;
+    height: 650px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 18px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+#login-container.was-active:not(.active) #toggle-box { 
+    animation: transition-two 0.5s ease-in-out forwards;
+}
+
+#login-container.active #toggle-box {
+    animation: transition-one 0.5s ease-in-out forwards;
+    left: 0%;
+}
+
+.box-login {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    padding: 40px;
+}
+
+.box-register {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    opacity: 0;
+    padding: 40px;
+}
+
+#toggle-box {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+}
+
+.toggle-panel-left {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(95deg, #71c969, #7494ec);
+    text-align: center;
+    padding: 0px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    border-radius: 0px 55px 55px 0px;
+    box-shadow: 0 2px 4px rgba(23, 22, 26, 0.9) ;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.toggle-panel-right {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(95deg, #71c969, #7494ec);
+    text-align: center;
+    padding: 0px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    border-radius: 65px 0 0 65px;
+    box-shadow: 0 2px 4px rgba(23, 22, 26, 0.9) ;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.toggle-panel h1
+{ 
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 15px;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
+}
+.toggle-panel p { 
+    font-size: 0.85rem;
+    font-weight: 300;
+    line-height: 1.5;
+    opacity: 0.95;
+    max-width: 260px;
+    margin-bottom: 25px;
+    letter-spacing: 0.3px;
+}
+
+.toggle-panel-left button { 
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 12px 45px;
+    border-radius: 25px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.toggle-panel-right button { 
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 12px 45px;
+    border-radius: 25px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.toggle-panel-left button:hover { 
+    background-color: #ffffff;
+    color: #677bc5;
+}
+
+.toggle-panel-right button:hover { 
+    background-color: #ffffff;
+    color: #677bc5;
+}
+
+#login-container:not(.active) .toggle-right,
+#login-container.active .toggle-left {
+    pointer-events: auto;
+}
+
+.toggle-right {
+    opacity: 1;
+}
+
+.toggle-left {
+    opacity: 0;
+}
+
+.input-field {
+    position: relative;
+    margin-bottom: 20px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.input-field input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: linear-gradient(65deg,#e8e9ec,#c6c7ca ) ;
+    border-radius: 17px;
+    padding-right: 40px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-field i {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+}
+
+.input-field label {
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-field input:focus{
+    outline: none;
+    border: 1px solid #4364e8;
+}
+
+.remember-check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.box-login button[type="submit"]{ 
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #4364e8;
+    color: white;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+.box-register button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: linear-gradient(95deg, #62a164, #7494ec);
+    color: white;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+.box-register button[type="submit"]:hover { 
+    background: linear-gradient(95deg, #518153, #637ec7);
+}
+
+.box-login button[type="submit"],
+.button-register button {
+    background: linear-gradient(95deg, #62a164, #7494ec);
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.box-login button[type="submit"]:hover,
+.button-register button:hover {
+     background: linear-gradient(95deg, #518153, #637ec7);
+}
+
+#login-container.active .box-login {
+    opacity: 0;
+}
+
+#login-container.active .box-register {
+    opacity: 1;
+}
+
+#login-container.active #toggle-box {
+    left: 0;
+}
+
+#login-container.active .toggle-right {
+    opacity: 0;
+}
+
+#login-container.active .toggle-left {
+    opacity: 1;
+}
