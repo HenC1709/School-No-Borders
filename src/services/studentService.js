@@ -23,3 +23,10 @@ async function findStudentByDni(dni) {
 function getRegisteredStudents() { 
     return JSON.parse(localStorage.getItem('registeredStudents') || '{}');
 }
+
+// actualizacion de LocalStorage
+function saveRegisteredStudent(dni, hash) { 
+    const registeredStudents = getRegisteredStudents();
+    registeredStudents[dni] = hash;
+    localStorage.setItem('registeredStudents', JSON.stringify(registeredStudents));
+}
