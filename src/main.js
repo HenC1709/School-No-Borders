@@ -31,7 +31,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     const student = await findStudentByDni(dni);
 
     if (!student) {
-        alert('DNI no encontrado.');
+        showAlert('DNI no encontrado, regístrese para iniciar.');
         return;
     }
 
@@ -39,16 +39,16 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     const storedHash = registeredStudents[dni];
 
     if (!storedHash) {
-        alert('Todavía no te registraste. Andá al formulario de registro.');
+        showAlert('Todavía no te registraste. Andá al formulario de registro.');
         return;
     }
 
     const isMatch = await comparePassword(password, storedHash);
 
     if (isMatch) {
-        alert('Inicio de sesión exitoso.');
+        showAlert('Inicio de sesión exitoso.');
     } else {
-        alert('Contraseña incorrecta.');
+        showAlert('Contraseña incorrecta.');
     }
 });
 
@@ -63,29 +63,40 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     const student = await findStudentByDni(dni);
 
     if (!student) {
-        alert('DNI no encontrado. Por favor, verifica tu número de DNI.');
+        showAlert('DNI no encontrado. Por favor, verifica tu número de DNI.');
         return;
     }
 
     const registeredStudents = getRegisteredStudents();
     if (registeredStudents[dni]) {
-        alert('Ya estás registrado. Por favor, inicia sesión.');
+        showAlert('Ya estás registrado. Por favor, inicia sesión.');
         return;
     }
 
     const confirmPassword = document.getElementById('confirm-password').value;
     if (!confirmPassword) {
-        alert('Por favor, confirma tu contraseña.');
+        showAlert('Por favor, confirma tu contraseña.');
         return;
     }
 
     if (password !== confirmPassword) {
-        alert('Las contraseñas no coinciden.');
+        showAlert('Las contraseñas no coinciden.');
         return;
     }
 
     const hashedPassword = await hashPassword(password);
     saveRegisteredStudent(dni, hashedPassword);
 
-    alert('Registro exitoso. Ahora puedes iniciar sesión.');
+    showAlert('Registro exitoso. Ahora puedes iniciar sesión.');
+});
+
+// Funcion de mensaje de alerta, no usamos alerta del navegador
+function showAlert(message) {
+    document.getElementById('modal-message').textContent = message;
+    document.getElementById('modal-overlay').classList.add('active');
+}
+
+const okButton = document.getElementById('modal-ok-button');
+okButton.addEventListener('click', function () {
+    document.getElementById('modal-overlay').classList.remove('active');
 });

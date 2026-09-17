@@ -32,6 +32,7 @@ Este proyecto es el punto de partida de un stack más grande que se va a ir arma
   - Efecto glassmorphism en `login-container` (`background: rgba(...)`, `backdrop-filter: blur()`, borde sutil) sobre una imagen de fondo de campus universitario
   - Animación de transición entre Login/Register con `@keyframes` (efecto "ola": el panel se expande al 100% del ancho a mitad de camino y se contrae del lado opuesto), más `transition: opacity` para el fade del texto
   - Modo oscuro funcional, con ícono dinámico (sol/luna) que cambia según el estado
+  - Modal de alerta con estilo propio: tarjeta con gradiente verde-azul sutil, tipografía Montserrat, botón OK compacto en forma de píldora (azul, con hover más oscuro y transición suave)
 - **JavaScript — UI (`main.js`):**
   - Toggle funcional entre modo Login/Register vía `classList.add/remove('active')` en el contenedor
   - Bug resuelto: clics bloqueados por paneles invisibles superpuestos (`pointer-events: none/auto` según el panel activo)
@@ -44,11 +45,19 @@ Este proyecto es el punto de partida de un stack más grande que se va a ir arma
     - **Login:** DNI no encontrado -> error. DNI encontrado pero sin contraseña registrada -> se le avisa al usuario que debe registrarse primero. DNI encontrado y registrado -> se compara la contraseña ingresada contra el hash guardado.
     - **Registro:** DNI no encontrado -> error (el colegio no cargó esa cédula). DNI encontrado pero ya registrado -> error, no se permite re-registrar ni sobrescribir la contraseña existente por este medio. DNI encontrado y sin registrar -> se valida que la contraseña y su confirmación coincidan, se hashea y se guarda.
   - Los formularios no recargan la página gracias a `event.preventDefault()` en cada listener.
+- **JavaScript — sistema de alertas propio:**
+  - Modal de alerta reutilizable en `index.html`, que reemplaza por completo al `alert()` nativo del navegador (no bloquea la ejecución de JS y sí se puede estilizar).
+  - Estructura: `.modal-overlay` (fondo oscuro fijo de pantalla completa, oculto por defecto vía `display: none`) que contiene `.modal-card` (tarjeta con el mensaje) con `#modal-message` (texto) y `#modal-ok-button` (botón de confirmación).
+  - `showAlert(message)` centraliza la lógica: actualiza el texto del mensaje y muestra el modal agregando la clase `active`.
+  - El listener del botón OK se registra una única vez, a nivel general del script (no dentro de `showAlert`), para evitar que se acumulen listeners duplicados en llamadas sucesivas.
+  - Todos los mensajes de `alert()` en los flujos de login y registro fueron reemplazados por `showAlert()`.
 
 ### Pendiente
 
+- Pulir la animación de transición del toggle Login/Register como cierre final de la UI/UX de esa pantalla
 - Recolectar y usar el campo `name` del formulario de registro en la lógica (por ahora solo se lee desde `Students.json`)
 - Definir e incorporar el campo `role` tanto en `Students.json` como en la lógica de registro
+- Lógica de bloqueo tras demasiados intentos fallidos de contraseña (el mensaje ya está definido, la lógica de conteo todavía no)
 - **Dashboards** — `dashboard-profesor.html` y `dashboard-estudiante.html`, con vistas distintas según rol
 - Revisar consistencia de mayúsculas/minúsculas entre distintos `id` del HTML
 
@@ -56,7 +65,7 @@ Este proyecto es el punto de partida de un stack más grande que se va a ir arma
 
 ```
 /proyecto-notas
-  index.html                    -> login/registro (panel deslizante)
+  index.html                    -> login/registro (panel deslizante) + modal de alertas
   dashboard-profesor.html       -> pendiente
   dashboard-estudiante.html     -> pendiente
   /css
@@ -71,7 +80,7 @@ Este proyecto es el punto de partida de un stack más grande que se va a ir arma
       passwordService.js        -> hashing y comparación de contraseñas (bcryptjs)
       studentService.js         -> acceso a Students.json y a localStorage
     /ui            -> funciones que pintan el DOM (pendiente)
-    main.js        -> toggle login/register + lógica de autenticación (implementado)
+    main.js        -> toggle login/register + lógica de autenticación + sistema de alertas (implementado)
 ```
 
 La separación en `/src` con `data`, `models`, `services`, `ui` está pensada como el equivalente informal a Clean Architecture en C#: `data` ≈ Infrastructure, `models` ≈ Domain, `services` ≈ Application, `ui` ≈ Presentation.
@@ -87,6 +96,8 @@ La separación en `/src` con `data`, `models`, `services`, `ui` está pensada co
 - **Hashing de contraseñas en el cliente, solo como práctica**: se usa bcryptjs en el navegador para simular el flujo completo de hash/compare mientras no existe backend. Es una decisión temporal y consciente: el hashing real, en producción, debe ocurrir del lado del servidor; este mock se reemplaza cuando se conecte la API en C#.
 - **Servicios separados por responsabilidad**: `passwordService.js` (hashing, infraestructura pura) se mantiene separado de `studentService.js` (entidad estudiante, datos y localStorage) en vez de unificarlos en un único `authService.js`, siguiendo el mismo principio de separación de responsabilidades que se aplica en el backend en C#.
 - **Registro no permite sobrescritura**: si un DNI ya tiene una contraseña registrada, el formulario de registro lo rechaza y lo redirige conceptualmente al login, en vez de permitir pisar la contraseña existente sin verificación.
+- **Modal de alerta HTML fijo, no generado dinámicamente**: se optó por dejar el modal ya escrito en `index.html` (oculto con `display: none` por defecto) en vez de crearlo desde JS con `document.createElement(...)` cada vez, ya que el contenido y la estructura son siempre los mismos y solo cambia el texto. Queda pendiente evaluar la generación dinámica para casos futuros donde el contenido sí varíe de forma más compleja.
+- **Modal sin animación de transición**: a diferencia del toggle login/register, el modal usa `display: none`/`flex` sin transición suave, ya que `display` no se puede animar de forma nativa y el enfoque con `opacity` se reservó para donde realmente aporta (el toggle). Queda abierto agregarle una transición de entrada/salida más adelante si se decide.
 
 ## Cómo correrlo
 
