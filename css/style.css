@@ -416,11 +416,14 @@ body.dark-mode .remember-check {
     font-weight: 500;
     font-family: 'Montserrat', sans-serif;
     color: #030303;
-    background: linear-gradient(135deg, #7ed3cc, #5788c0);
+    background: linear-gradient(125deg, #7bce7e, #809dee);
     border: none;
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.2s;
+    display: block;
+    margin: 0 auto;
+    width: 25%;
 }
 
 #modal-ok-button:hover { 
