@@ -31,7 +31,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     const student = await findStudentByDni(dni);
 
     if (!student) {
-        showAlert('DNI no encontrado, regístrese para iniciar.');
+        showAlert('DNI no encontrado, regístrese para iniciar.', 'error');
         return;
     }
 
@@ -39,16 +39,16 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     const storedHash = registeredStudents[dni];
 
     if (!storedHash) {
-        showAlert('Todavía no te registraste. Andá al formulario de registro.');
+        showAlert('Todavía no te registraste. Andá al formulario de registro.', 'error');
         return;
     }
 
     const isMatch = await comparePassword(password, storedHash);
 
     if (isMatch) {
-        showAlert('Inicio de sesión exitoso.');
+        showAlert('Inicio de sesión exitoso.', 'success');
     } else {
-        showAlert('Contraseña incorrecta.');
+        showAlert('Contraseña incorrecta.', 'error');
     }
 });
 
@@ -63,40 +63,49 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     const student = await findStudentByDni(dni);
 
     if (!student) {
-        showAlert('DNI no encontrado. Por favor, verifica tu número de DNI.');
+        showAlert('DNI no encontrado. Por favor, verifica tu número de DNI.', 'error');
         return;
     }
 
     const registeredStudents = getRegisteredStudents();
     if (registeredStudents[dni]) {
-        showAlert('Ya estás registrado. Por favor, inicia sesión.');
+        showAlert('Ya estás registrado. Por favor, inicia sesión.', 'error');
         return;
     }
 
     const confirmPassword = document.getElementById('confirm-password').value;
     if (!confirmPassword) {
-        showAlert('Por favor, confirma tu contraseña.');
+        showAlert('Por favor, confirma tu contraseña.', 'error');
         return;
     }
 
     if (password !== confirmPassword) {
-        showAlert('Las contraseñas no coinciden.');
+        showAlert('Las contraseñas no coinciden.', 'error');
         return;
     }
 
     const hashedPassword = await hashPassword(password);
     saveRegisteredStudent(dni, hashedPassword);
 
-    showAlert('Registro exitoso. Ahora puedes iniciar sesión.');
+    showAlert('Registro exitoso. Ahora puedes iniciar sesión.', 'success');
 });
 
 // Funcion de mensaje de alerta, no usamos alerta del navegador
-function showAlert(message) {
+function showAlert(message, type) {
     document.getElementById('modal-message').textContent = message;
-    document.getElementById('modal-overlay').classList.add('active');
+   
+   if (type === 'error') { 
+    document.getElementById('modal-overlay').classList.add('error');
+   } else { 
+    document.getElementById('modal-overlay').classList.add('success');
+   }
+
+   document.getElementById('modal-overlay').classList.add('active');
 }
 
 const okButton = document.getElementById('modal-ok-button');
 okButton.addEventListener('click', function () {
+    document.getElementById('modal-overlay').classList.remove('error');
+    document.getElementById('modal-overlay').classList.remove('success');
     document.getElementById('modal-overlay').classList.remove('active');
 });
