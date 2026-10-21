@@ -1,7 +1,4 @@
 
-* {
-    box-sizing: border-box;
-}
 
 @keyframes transition-one {
     0% {
@@ -53,16 +50,7 @@
     color: #242c24;
 }
 
-body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('/images/School.jpg');
-    background-size: cover;
-    background-position: center;
-}
+
 
 #login-container {
     width: 725px;
@@ -266,20 +254,7 @@ body {
     opacity: 1;
 }
 
-#theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.2rem;
-    background: var(--color-glass);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
+
 
 body.dark-mode #login-container {
     background: rgba(20, 20, 30, 0.5);
