@@ -103,7 +103,7 @@ La separación en `/src` con `data`, `models`, `services`, `ui` está pensada co
 
 No requiere instalación ni build. Se recomienda usar la extensión Live Server de VS Code (en vez de abrir el archivo directo con doble clic), ya que la lógica de autenticación usa `fetch()` para leer `Students.json`, lo cual requiere que el proyecto se sirva por HTTP y no como archivo local (`file://`).
 
-## 📸 Project Preview
+## Project Preview
 
 Here is how the project looks in action:
 
