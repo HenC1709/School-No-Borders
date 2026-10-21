@@ -3,6 +3,7 @@
 :root { 
     --font-main: 'Montserrat', sans-serif;
     --color-accent: #4364e8;
+    --color-glass: rgba(255, 255, 255, 0.4);
 }
 
 * {
@@ -73,7 +74,7 @@ body {
 #login-container {
     width: 725px;
     height: 650px;
-    background: rgba(255, 255, 255, 0.4);
+    background: var(--color-glass);
     backdrop-filter: blur(6px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 18px;
@@ -281,7 +282,7 @@ body {
     border-radius: 50%;
     cursor: pointer;
     font-size: 1.2rem;
-    background: rgba(255, 255, 255, 0.4);
+    background: var(--color-glass);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
