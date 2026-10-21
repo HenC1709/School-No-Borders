@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap');
+
+:root { 
+    --font-main: 'Montserrat', sans-serif;
+    --color-accent: #4364e8;
+    --color-glass: rgba(255, 255, 255, 0.4);
+    --gradient-main: linear-gradient(95deg, #62a164, #7494ec);
+    --gradient-main-hover: linear-gradient(95deg, #518153, #637ec7);
+}
