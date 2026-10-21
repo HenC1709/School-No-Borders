@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap');
 
+:root { 
+    --font-main: 'Monstserrat', sans-sarif;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -128,7 +132,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-main);
     color: #ffffff;
     box-shadow: 0 2px 4px rgba(23, 22, 26, 0.9);
     transition: opacity 0.4s ease-in-out;
