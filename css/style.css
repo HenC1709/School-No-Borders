@@ -1,133 +1,15 @@
-@keyframes transition-one {
-    0% {
-        left: 50%;
-        width: 50%;
-    }
-
-    50% {
-        left: 0%;
-        width: 100%;
-    }
-
-    100% {
-        left: 0%;
-        width: 50%;
-    }
-}
-
-@keyframes transition-two {
-    0% {
-        left: 0%;
-        width: 50%;
-    }
-
-    50% {
-        left: 0%;
-        width: 100%;
-    }
-
-    100% {
-        left: 50%;
-        width: 50%;
-    }
-}
-
-#login-container.was-active:not(.active) #toggle-box {
-    animation: transition-two 0.5s ease-in-out forwards;
-}
-
-#login-container.active #toggle-box {
-    animation: transition-one 0.5s ease-in-out forwards;
-    left: 0%;
-}
-
-#toggle-box {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 50%;
-    height: 100%;
-}
-
-.toggle-panel-left,
-.toggle-panel-right {
-    top: 0;
-    left: 0;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background: var(--gradient-main);
-    text-align: center;
-    padding: 0px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: var(--font-main);
-    color: #ffffff;
-    box-shadow: 0 2px 4px rgba(23, 22, 26, 0.9);
-    transition: opacity 0.4s ease-in-out;
-}
-
-.toggle-panel-left { 
-    border-radius: 0px 55px 55px 0px;
-}
-
-.toggle-panel-right {
-    border-radius: 55px 0 0 55px;
-}
-
-.toggle-panel-left button,
-.toggle-panel-right button {
-    background-color: transparent;
-    border: 2px solid #ffffff;
-    color: #ffffff;
-    font-family: var(--font-main);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    padding: 12px 45px;
-    border-radius: 25px;
-    cursor: pointer;
-    text-transform: uppercase;
-}
-
-.toggle-panel-left button:hover,
-.toggle-panel-right button:hover  {
-    background-color: #ffffff;
-    color: #677bc5;
-}
-
-#login-container:not(.active) .toggle-right,
-#login-container.active .toggle-left {
-    pointer-events: auto;
-}
-
-.toggle-right {
-    opacity: 1;
-}
-
-.toggle-left {
-    opacity: 0;
-}
 
 
-#login-container.active .box-login {
-    opacity: 0;
-}
 
-#login-container.active .box-register {
-    opacity: 1;
-}
 
-#login-container.active .toggle-right {
-    opacity: 0;
-}
 
-#login-container.active .toggle-left {
-    opacity: 1;
-}
+
+
+
+
+
+
+
 
 
 

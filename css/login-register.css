@@ -117,3 +117,11 @@
 .box-register button[type="submit"]:hover {
     background: var(--gradient-main-hover);
 }
+
+#login-container.active .box-login {
+    opacity: 0;
+}
+
+#login-container.active .box-register {
+    opacity: 1;
+}
