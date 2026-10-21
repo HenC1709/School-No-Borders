@@ -4,7 +4,7 @@ Sistema de inicio de sesión y registro para gestión de notas de estudiantes. P
 
 ## Project Preview
 
-Here is how the project looks in action:
+Proyecto en accion:
 
 ### Login & Register Interface
 ![Login Screen](/images/login-view.png)
