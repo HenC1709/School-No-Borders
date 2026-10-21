@@ -2,6 +2,19 @@
 
 Sistema de inicio de sesión y registro para gestión de notas de estudiantes. Proyecto de práctica enfocado en dominar HTML/CSS/JS vanilla antes de escalar a un backend real con ASP.NET Core, EF Core y SQL Server.
 
+## Project Preview
+
+Proyecto en accion:
+
+### Login & Register Interface
+![Login Screen](/images/login-view.png)
+
+### Dark Mode
+![Dark Mode View](/images/dark-mode.png)
+
+### Modal-card 
+![Modal-Card](/images/modal.card.png)
+
 ## Idea del proyecto
 
 En lugar de un registro libre, el sistema simula el flujo real de un colegio: la cédula (DNI) ya existe precargada en el sistema, y el usuario "reclama" su cuenta creando su propia contraseña la primera vez que entra, en vez de que el colegio le entregue una clave genérica.
@@ -102,16 +115,3 @@ La separación en `/src` con `data`, `models`, `services`, `ui` está pensada co
 ## Cómo correrlo
 
 No requiere instalación ni build. Se recomienda usar la extensión Live Server de VS Code (en vez de abrir el archivo directo con doble clic), ya que la lógica de autenticación usa `fetch()` para leer `Students.json`, lo cual requiere que el proyecto se sirva por HTTP y no como archivo local (`file://`).
-
-## 📸 Project Preview
-
-Here is how the project looks in action:
-
-### Login & Register Interface
-![Login Screen](/images/login-view.png)
-
-### Dark Mode
-![Dark Mode View](/images/dark-mode.png)
-
-### Modal-card 
-![Modal-Card](/images/modal.card.png)
