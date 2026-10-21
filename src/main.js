@@ -31,7 +31,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     const student = await findStudentByDni(dni);
 
     if (!student) {
-        showAlert('DNI no encontrado, regístrese para iniciar.', 'error');
+        showAlert('DNI not found, please register to login.', 'error');
         return;
     }
 
@@ -39,16 +39,16 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     const storedHash = registeredStudents[dni];
 
     if (!storedHash) {
-        showAlert('Todavía no te registraste. Andá al formulario de registro.', 'error');
+        showAlert('you are not register yet: go to the form', 'error');
         return;
     }
 
     const isMatch = await comparePassword(password, storedHash);
 
     if (isMatch) {
-        showAlert('Inicio de sesión exitoso.', 'success');
+        showAlert('Successful login', 'success');
     } else {
-        showAlert('Contraseña incorrecta.', 'error');
+        showAlert('Incorrect Password', 'error');
     }
 });
 
@@ -63,31 +63,31 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     const student = await findStudentByDni(dni);
 
     if (!student) {
-        showAlert('DNI no encontrado. Por favor, verifica tu número de DNI.', 'error');
+        showAlert('DNI not found. Please, Check your ID Number', 'error');
         return;
     }
 
     const registeredStudents = getRegisteredStudents();
     if (registeredStudents[dni]) {
-        showAlert('Ya estás registrado. Por favor, inicia sesión.', 'error');
+        showAlert('You was register. Please, Sign up', 'error');
         return;
     }
 
     const confirmPassword = document.getElementById('confirm-password').value;
     if (!confirmPassword) {
-        showAlert('Por favor, confirma tu contraseña.', 'error');
+        showAlert('Please, confirm your password', 'error');
         return;
     }
 
     if (password !== confirmPassword) {
-        showAlert('Las contraseñas no coinciden.', 'error');
+        showAlert('The passwords do not match.', 'error');
         return;
     }
 
     const hashedPassword = await hashPassword(password);
     saveRegisteredStudent(dni, hashedPassword);
 
-    showAlert('Registro exitoso. Ahora puedes iniciar sesión.', 'success');
+    showAlert('Successful register. now you can sign up', 'success');
 });
 
 // Funcion de mensaje de alerta, no usamos alerta del navegador
