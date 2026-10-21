@@ -6,14 +6,17 @@ Sistema de inicio de sesión y registro para gestión de notas de estudiantes. P
 
 Proyecto en accion:
 
-### Login & Register Interface
+### Interfaz de registro e inicio de sección
 ![Login Screen](/images/login-view.png)
 
-### Dark Mode
+### Modo Oscuro
 ![Dark Mode View](/images/dark-mode.png)
 
 ### Modal-card 
 ![Modal-Card](/images/modal.card.png)
+
+### Estructura CSS
+![CSS](/images/CSS.png)
 
 ## Idea del proyecto
 
