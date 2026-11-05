@@ -93,14 +93,14 @@ document.getElementById('registerForm').addEventListener('submit', async functio
 // Funcion de mensaje de alerta, no usamos alerta del navegador
 function showAlert(message, type) {
     document.getElementById('modal-message').textContent = message;
-   
-   if (type === 'error') { 
-    document.getElementById('modal-overlay').classList.add('error');
-   } else { 
-    document.getElementById('modal-overlay').classList.add('success');
-   }
 
-   document.getElementById('modal-overlay').classList.add('active');
+    if (type === 'error') {
+        document.getElementById('modal-overlay').classList.add('error');
+    } else {
+        document.getElementById('modal-overlay').classList.add('success');
+    }
+
+    document.getElementById('modal-overlay').classList.add('active');
 }
 
 const okButton = document.getElementById('modal-ok-button');
