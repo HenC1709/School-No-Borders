@@ -1,3 +1,12 @@
+body { 
+    background-image: url('/images/School.jpg');
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+}
 #login-container {
     width: 725px;
     height: 650px;
