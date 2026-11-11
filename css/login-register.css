@@ -5,7 +5,7 @@ body {
     justify-content: center;
     align-items: center;
     background-size: cover;
-    background-position: center;
+    background-position: center 40%;
 }
 #login-container {
     width: 725px;
