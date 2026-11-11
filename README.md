@@ -15,9 +15,6 @@ Proyecto en accion:
 ### Modal-card 
 ![Modal-Card](/images/modal.card.png)
 
-### Estructura CSS
-![CSS](/images/CSS.png)
-
 ## Idea del proyecto
 
 En lugar de un registro libre, el sistema simula el flujo real de un colegio: la cédula (DNI) ya existe precargada en el sistema, y el usuario "reclama" su cuenta creando su propia contraseña la primera vez que entra, en vez de que el colegio le entregue una clave genérica.
