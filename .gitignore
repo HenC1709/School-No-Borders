@@ -1,0 +1,26 @@
+# Documentación interna / auditoría (no subir a GitHub)
+docs/
+
+# Sistema operativo y editores
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Node / React / TypeScript (futuro frontend)
+node_modules/
+dist/
+build/
+.env
+.env.local
+.env.*.local
+npm-debug.log*
+
+# .NET / ASP.NET Core (futuro backend)
+bin/
+obj/
+*.user
+*.suo
+.vs/
+appsettings.Development.json
