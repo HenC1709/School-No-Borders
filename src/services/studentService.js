@@ -1,7 +1,7 @@
 // obtener todos los estudiantes
 async function getStudents() {
     // marcamos ruta de archivo
-    const response = await fetch('src/data/Students.json');
+    const response = await fetch('src/data/students.json');
     const data = await response.json();
     return data;
 }
